@@ -1,7 +1,7 @@
 # Site settings
 title:       Wangyuehui
 email:       503009358@qq.com
-author:      John Otander
+author:      twolight
 description: "Android Developer"
 baseurl:     ""
 url:         "http://twolight.github.io"
@@ -94,7 +94,7 @@ text:
     email:    'Email Address'
     content:  'What would you like to say?'
     subject:  'New submission!'
-    submit:   'Say Hello'
+    submit:   'Commmit'
     ajax:
       sending:  'sending..'
       sent:     'Message sent!'
