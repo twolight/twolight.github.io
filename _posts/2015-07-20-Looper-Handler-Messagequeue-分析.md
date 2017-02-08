@@ -6,7 +6,7 @@ summary:    一般情况，在Service做耗时操作，会在Service中另开子
 categories: jekyll pixyll
 ---
 
-##Looper Handler MessageQueue分析
+## Looper Handler MessageQueue分析
 
 我所有的文章都会提交到github上，喜欢的同学可以来github关注。欢迎提交你们的文章
 
@@ -14,7 +14,7 @@ Github [https://github.com/twolight/LearnNote.git](https://github.com/twolight/L
 
 邮箱 twolight88@gmail.com
 
-###背景
+### 背景
 
 在Android，线程之间的通信，通过Hanlder发送消息，具体Hanlder是向那个线程发送消息，是根据Hanlder在哪个线程中创建的。这同时决定了Hanlder的handleMessage方法运行在哪个线程。
 
@@ -39,7 +39,7 @@ Github [https://github.com/twolight/LearnNote.git](https://github.com/twolight/L
 ```
 了解清楚之后，再来分析消息是如何发送到线程的，在线程中又是如何如何处理消息的。
 
-###分析
+### 分析
 
 在上面的代码中，之所以在Activity创建Hanlder之前没有调用Looper.prepare()和Looper.loop()，是因为主线程在启动时，已经自己创建Looper,并调用了loop。
 
@@ -58,8 +58,8 @@ Github [https://github.com/twolight/LearnNote.git](https://github.com/twolight/L
 
 下面分析这几个步骤
 
-###步骤分析
-* ####创建Looper
+### 步骤分析
+* #### 创建Looper
 
 
 	```
@@ -110,7 +110,7 @@ Github [https://github.com/twolight/LearnNote.git](https://github.com/twolight/L
 	
 	Looper.prepare()的作用是，创建一个Looper对象，并将它放到当前线程的ThreadLocal中去。并且创建一个MessageQueue.
 
-* ####创建Hanlder
+* #### 创建Hanlder
 
 	```
 	public Handler(Callback callback, boolean async) {
@@ -132,7 +132,7 @@ Github [https://github.com/twolight/LearnNote.git](https://github.com/twolight/L
 	由于创建Handler和创建Looper的线程是同一个线程，Handler能拿到之前创建的Looper对象，以及在Looper中创建的消息队列。
 	所以这就是Threadlocal的作用，只要在同一个线程内，对于不同的对象，都能通过Threadlocal拿到共享的变量。Looper，就是这样的共享的变量。
 	
-* ####Looper消息循环
+* #### Looper消息循环
 	关键代码
 	
 	```
@@ -175,7 +175,7 @@ Github [https://github.com/twolight/LearnNote.git](https://github.com/twolight/L
 	
 	loop方法，在死循环中，不停的从消息队列取消息，没有消息，代码就一直在next方法中执行，不会有返回值。代码不会往下执行。next()如果返回null，表示消息队列正在退出，那么Looper也需要退出，就跳出死循环停止对消息队列取消息。next()返回消息，那么调用的msg.target.dispatchMessage(msg)，也就是调用Handler的dispatchMessage方法，去分发msg。
 	
-* ####Hanlder发送消息
+* #### Hanlder发送消息
 
 	Handler发送消息，最终会调用一下代码
 	
@@ -229,7 +229,7 @@ Github [https://github.com/twolight/LearnNote.git](https://github.com/twolight/L
 	上面的步骤，说了Looper会调用msg.target.dispatchMessage(msg);让Handler转发消息，handler会调用handleMessage方法，这是一个空实现，我们可以在子类或者匿名类中重写此方法。
 	
 
-###总结
+### 总结
 
 
 至此，线程间的消息机制，调用流程，就分析完了。

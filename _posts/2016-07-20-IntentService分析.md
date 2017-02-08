@@ -6,7 +6,7 @@ summary:    一般情况，在Service做耗时操作，会在Service中另开子
 categories: jekyll pixyll
 ---
 
-##IntentService分析
+## IntentService分析
 
 我所有的文章都会提交到github上，喜欢的同学可以来github关注。欢迎提交你们的文章
 
@@ -14,13 +14,13 @@ Github [https://github.com/twolight/LearnNote.git](https://github.com/twolight/L
 
 邮箱 twolight88@gmail.com
 
-###背景###
+### 背景
 
 Service运行在调用它的进程和线程中，在开发当中，在Activity中启动Service，意味着Service将运行在主线程中。所以，它的onXxx方法，并不能做耗时的操作的，不然将阻塞主线程，可能导致ARN。
 
 一般情况，在Service做耗时操作，会在Service中另开子线程，做这部分耗时操作。幸运的是，Android提供了IntenService这个类，满足了我们在Service中做耗时操作的要求。
 
-###分析##
+### 分析
 
 下面将分析IntenService内部是如何做到的。下面是主要的代码
 
@@ -121,7 +121,7 @@ IntentService onCreate方法中，启动启动线程之后，获得这个子线�
 
 那我们就知道了，ServiceHandler其实是用来向子线程发送消息的。子线程通过Looper，去遍历消息队列，取出消息，回调ServiceHandler的handleMessage方法，进而调用onHandleIntent方法。onHandleIntent方法，就是需要我们自己实现的耗时操作。
 
-###总结###
+### 总结
 
 * IntentService创建时
 

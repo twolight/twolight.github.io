@@ -6,9 +6,9 @@ summary:    Style和Theme的定义和使用以及相关知识
 categories: jekyll pixyll
 ---
 
-##Styles and Themes
+## Styles and Themes
 
-* ###Style和Theme的定义和使用  
+* ### Style和Theme的定义和使用  
 
 
 >A style is a collection of properties that specify the look and format for a View or window. A style can specify properties such as height, padding, font color, font size, background color, and much more. A style is defined in an XML resource that is separate from the XML that specifies the layout.
@@ -72,7 +72,7 @@ Android官方的Style，通过parent方式来继承的，如果是自己定义�
 
 
 
-* ###Theme兼容性
+* ### Theme兼容性
 
 Android不同的版本下有不同的Theme，如何兼容呢。
 
@@ -96,7 +96,7 @@ res/values/styles.xml文件中定义如下Theme
 
 
 
-* ###Style和Theme属性
+* ### Style和Theme属性
 </br>
 
 	
