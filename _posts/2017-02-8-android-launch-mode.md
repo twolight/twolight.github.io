@@ -2,7 +2,7 @@
 layout:     post
 title:      Android Launch Mode
 date:       2017-02-8
-summary:    Tanslate google document about Android launch mode
+summary:    Android launch mode分析
 categories: jekyll pixyll
 ---
 
