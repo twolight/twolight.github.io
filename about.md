@@ -5,7 +5,7 @@ permalink: /about/
 tags: about
 ---
 
-Github:[twolight.github.com](twolight.github.com)
+Github: [twolight.github.com](http://twolight.github.com)
 
-E-mail:<503009358@QQ.com>
+E-mail: <503009358@QQ.com>
 
