@@ -14,8 +14,6 @@ Email: [twolight88@gmail.com](twolight88@gmail.com)
 
 
 
-]()
-
 Android MotionEvent 对象描述了一个触摸屏幕的动作
 
 * #### 触摸位置
@@ -69,7 +67,7 @@ Android MotionEvent 对象描述了一个触摸屏幕的动作
 
 * #### 实践
 
-  ##### 例子1：RecyclerView嵌套横竖滑动冲突
+  ##### 例子1：RecyclerView 嵌套横竖滑动冲突
 
   ````
   @Override
