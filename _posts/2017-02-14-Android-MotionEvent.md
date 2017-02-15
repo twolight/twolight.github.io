@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Android MotionEvent
-date:       2017-02-13
+date:       2017-02-14
 summary:    分析Android MotionEvent
 categories: jekyll pixyll
 ---
