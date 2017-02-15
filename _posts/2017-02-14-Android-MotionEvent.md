@@ -10,17 +10,17 @@ Github:[https://github.com/twolight](https://github.com/twolight)
 
 Blog:[https://twolight.github.io/](https://twolight.github.io/)
 
-Email:twolight88@gmail.com
+Email: [twolight88@gmail.com](twolight88@gmail.com)
+
+
 
 ]()
-
-
 
 Android MotionEvent 对象描述了一个触摸屏幕的动作
 
 * #### 触摸位置
 
-  ```getX```和``getY``:Touch点的相对坐标，相对于消费此事件的View的左上角的坐标
+  ``getX``和``getY``：Touch点的相对坐标，相对于消费此事件的View的左上角的坐标
 
   `getRawX()`和`getRawY()`：Touch点的绝对坐标，相对于屏幕的左上角
 
@@ -33,7 +33,7 @@ Android MotionEvent 对象描述了一个触摸屏幕的动作
   3. ``MotionEvent.ACTION_UP`` 最后一个手指离开屏幕
 
 
-    ##### 多个手指
+  ##### 多个手指
 
   1. ``MotionEvent.ACTION_POINTER_DOWN`` 第二个手指按下屏幕
   2. ``MotionEvent.ACTION_POINTER_UP`` 多个手指中的一个离开屏幕
@@ -43,35 +43,33 @@ Android MotionEvent 对象描述了一个触摸屏幕的动作
 
   上面提到触摸类型，有单个手指和多个手指的情况， 用``Point``来标示一个触摸点。
 
-  ##### ``Point``的属性：
+  ##### Point的属性：
 
   1. id  在整个事件流中是不会发生变化的
   2. x,y
   3. index  在整个事件流中会发生变化
 
-  ​
-
   ``MotionEvent``实际上课理解为对一个或多个``Point``进行了封装。通过它，可以获取上面的``Point``的属性。
 
-  ##### ``getAction``：
+  ##### getAction：
 
   获取的int值是由pointer的index值和事件类型值组合。例如`` index`` 0x01类型 0x0015，``getAction``获取的int值死0x0115
 
-  ##### ``getActionMasked``：
+  ##### getActionMasked：
 
   获取事件的类型值
 
-  ##### ``getActionIndex``：
+  ##### getActionInde：
 
   获取Point index
 
-  ##### ``getPointerId(int index)``:
+  ##### getPointerId(int index)：
 
   通过Point index获取Point id 
 
 * #### 实践
 
-  ##### 例子1：``RecyclerView`` 嵌套横竖滑动冲突
+  ##### 例子1：RecyclerView嵌套横竖滑动冲突
 
   ````
   @Override
@@ -105,7 +103,6 @@ Android MotionEvent 对象描述了一个触摸屏幕的动作
     }
     return mScrollState == SCROLL_STATE_DRAGGING;
   }
-
   ````
 
   ​
