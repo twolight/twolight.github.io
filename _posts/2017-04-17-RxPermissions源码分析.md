@@ -121,6 +121,46 @@ public class RxPermissions {
 
 
 
+# RxPermissionsFragment.java
+
+
+
+```
+public class RxPermissionsFragment extends Fragment {
+	@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+    
+	@TargetApi(Build.VERSION_CODES.M)
+    void requestPermissions(@NonNull String[] permissions) {
+        requestPermissions(permissions, PERMISSIONS_REQUEST_CODE);
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode != PERMISSIONS_REQUEST_CODE) return;
+
+        boolean[] shouldShowRequestPermissionRationale = new boolean[permissions.length];
+
+        for (int i = 0; i < permissions.length; i++) {
+            shouldShowRequestPermissionRationale[i] = shouldShowRequestPermissionRationale(permissions[i]);
+        }
+
+        onRequestPermissionsResult(permissions, grantResults, shouldShowRequestPermissionRationale);
+    }
+}
+```
+
+
+
+`setRetainInstance(true)` 增加引用，避免`Fragment`被Java内存回收器回收，在Java中没有被引用的对象会被回收。
+
+调用 `Fragement`的`requestPermissions`方法 ，最终请求权限的结果会回调`onRequestPermissionsResult`方法。然后通过Rxjava把结果发送给订阅者。最终证明之前的猜想正确。
+
 
 
 
